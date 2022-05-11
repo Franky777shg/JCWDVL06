@@ -1,0 +1,19 @@
+<script>
+  alert("Game Menebak Angka 🎮");
+  const input = +prompt("Masukan angka (1 - 5):");
+  const random = Math.ceil(Math.random() * 5);
+
+  if (input < 1 || input > 5) {
+    alert(`Input salah ❌`);
+  } else if (input === random) {
+    alert(`Angka Random = ${random}
+      Angka Yang Anda Input = ${input}
+      Anda Benar ✔️
+      `);
+  } else {
+    alert(`Angka Random = ${random}
+      Angka Yang Anda Input = ${input}
+      Anda Salah
+      `);
+  }
+</script>
