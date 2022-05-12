@@ -1,0 +1,39 @@
+<script>
+  alert("Game Menebak Angka 🎮");
+
+  main: while (true) {
+    let input;
+    // looping minta input dari user sampai inputannya benar
+    inputUser: while (true) {
+      const inputUser = +prompt("Masukan angka (1 - 5):");
+      if (inputUser < 1 || inputUser > 5) {
+        alert(`Input salah ❌`);
+      } else {
+        input = inputUser;
+        break inputUser;
+      }
+    }
+
+    // generate angka random
+    const random = Math.ceil(Math.random() * 5);
+
+    // algoritma hasil salah atau benar
+    if (input === random) {
+      alert(`Angka Random = ${random}
+      Angka Yang Anda Input = ${input}
+      Anda Benar ✔️
+      `);
+    } else {
+      alert(`Angka Random = ${random}
+      Angka Yang Anda Input = ${input}
+      Anda Salah
+      `);
+    }
+
+    // tanya user untuk bermainlagi atau tidak
+    const mainLagi = confirm("Mau main lagi?");
+    if (!mainLagi) {
+      break main;
+    }
+  }
+</script>
