@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label>Masukan kalimat:</label>
+    <br />
+    <input type="text" id="kalimat" />
+    <br />
+    <br />
+    <label>Masukan satu karakter:</label>
+    <br />
+    <input type="text" id="karakter" />
+    <br />
+    <br />
+    <button onclick="cari()">Cari!</button>
+    <p id="hasil"></p>
+  </body>
+  <script>
+    const cari = () => {
+      let kalimat = document.getElementById("kalimat").value; // javascript
+      let karakter = document.getElementById("karakter").value; // a
+      let counter = 0;
+
+      for (let i = 0; i < kalimat.length; i++) {
+        if (kalimat[i] === karakter) counter++;
+      }
+
+      document.getElementById(
+        "hasil"
+      ).innerHTML = `Terdapat ${counter} karakter ${karakter} pada kalimat ${kalimat}`;
+    };
+  </script>
+</html>
