@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      background-color: salmon;
+    }
+
+    table {
+      margin-top: 15px;
+    }
+
+    table,
+    tr,
+    td,
+    th {
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+  </style>
+  <body>
+    <center>
+      <h1>Random Picker</h1>
+      <input type="text" id="input" />
+      <button onclick="addData()">Add to list</button>
+      <h2 id="random">Wait..</h2>
+      <button onclick="startRandom()">Start Random</button>
+      <button onclick="stopRandom()">Stop Random</button>
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody id="list"></tbody>
+      </table>
+    </center>
+  </body>
+  <script>
+    let database = [];
+    let interval;
+
+    const addData = () => {
+      const input = document.getElementById("input").value;
+      database.push(input);
+      showlist(database);
+      document.getElementById("input").value = "";
+    };
+
+    const showlist = (data) => {
+      const list = document.getElementById("list");
+      let tr = "";
+      for (let i = 0; i < data.length; i++) {
+        tr += `<tr>
+                    <td>${i + 1}.</td>
+                    <td>${data[i]}</td>
+                </tr>`;
+      }
+      list.innerHTML = tr;
+    };
+
+    const random = () => {
+      const random = document.getElementById("random");
+      random.innerHTML = `${
+        database[Math.floor(Math.random() * database.length)]
+      }`;
+    };
+
+    const startRandom = () => {
+      interval = setInterval(random, 50);
+    };
+
+    const stopRandom = () => {
+      clearInterval(interval);
+    };
+
+    showlist(database);
+  </script>
+</html>
