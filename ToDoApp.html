@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>To-Do App</h1>
+    <input type="text" id="input" />
+    <button onclick="onAdd()">Add</button>
+    <ul id="list"></ul>
+  </body>
+  <script>
+    let database = [];
+
+    let onAdd = () => {
+      // ambil data dari input
+      let input = document.getElementById("input").value;
+      database.push(input);
+      showlist(database);
+      document.getElementById("input").value = "";
+    };
+
+    let showlist = (data) => {
+      let li = "";
+      data.forEach((item) => {
+        li += `<li>${item} <button>Edit</button>&nbsp&nbsp<button>Delete</button></li>`;
+      });
+      document.getElementById("list").innerHTML = li;
+    };
+
+    showlist(database);
+  </script>
+</html>
