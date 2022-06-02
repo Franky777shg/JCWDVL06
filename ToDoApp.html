@@ -13,7 +13,7 @@
     <ul id="list"></ul>
   </body>
   <script>
-    let database = [];
+    let database = ["makan", "minum", "tidur"];
 
     let onAdd = () => {
       // ambil data dari input
@@ -25,10 +25,23 @@
 
     let showlist = (data) => {
       let li = "";
-      data.forEach((item) => {
-        li += `<li>${item} <button>Edit</button>&nbsp&nbsp<button>Delete</button></li>`;
+      data.forEach((item, index) => {
+        li += `<li>${item}<button onClick="onEdit(${index})">Edit</button>&nbsp&nbsp<button onClick="onDelete(${index})">Delete</button></li>`;
       });
       document.getElementById("list").innerHTML = li;
+    };
+
+    let onDelete = (id) => {
+      console.log(id);
+      database.splice(id, 1);
+      showlist(database);
+    };
+
+    let onEdit = (id) => {
+      console.log(id);
+      let editTodo = prompt("Edit To-Do:");
+      database.splice(id, 1, editTodo);
+      showlist(database);
     };
 
     showlist(database);
