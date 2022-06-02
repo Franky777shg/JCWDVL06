@@ -26,21 +26,21 @@
     let showlist = (data) => {
       let li = "";
       data.forEach((item, index) => {
-        li += `<li>${item}<button onClick="onEdit(${index})">Edit</button>&nbsp&nbsp<button onClick="onDelete(${index})">Delete</button></li>`;
+        li += `<li>${item}&nbsp&nbsp<button onClick="onEdit(${index})">Edit</button>&nbsp&nbsp<button onClick="onDelete(${index})">Delete</button></li>`;
       });
       document.getElementById("list").innerHTML = li;
     };
 
     let onDelete = (id) => {
-      console.log(id);
       database.splice(id, 1);
       showlist(database);
     };
 
     let onEdit = (id) => {
-      console.log(id);
       let editTodo = prompt("Edit To-Do:");
-      database.splice(id, 1, editTodo);
+      if (editTodo) {
+        database.splice(id, 1, editTodo);
+      }
       showlist(database);
     };
 
