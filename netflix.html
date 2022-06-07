@@ -84,6 +84,54 @@
     #header-right select option {
       background-color: gray;
     }
+    #content {
+      height: 415px;
+      width: 950px;
+      /* background-color: green; */
+      margin: auto;
+      margin-top: 140px;
+      text-align: center;
+      font-family: sans-serif;
+    }
+    #content h1 {
+      font-size: 64px;
+      font-weight: 700;
+      color: #ffffff;
+      width: 850px;
+      /* background-color: aqua; */
+      margin: auto;
+    }
+    #content h4 {
+      font-size: 26px;
+      color: #ffffff;
+      margin-top: 16px;
+      /* background-color: lightcoral; */
+    }
+    #content h6 {
+      font-size: 20px;
+      color: #ffffff;
+      margin: 30px 0 20px 0;
+      /* background-color: darkgoldenrod; */
+    }
+    #subscribe {
+      width: 662px;
+      height: 70px;
+      /* background-color: orange; */
+      display: flex;
+      margin: auto;
+    }
+    #subscribe input {
+      width: 500px;
+      padding-left: 10px;
+    }
+    #subscribe button {
+      width: 162px;
+      background-color: #f40612;
+      color: #ffffff;
+      font-size: 30px;
+      border-style: none;
+      border-radius: 3px;
+    }
   </style>
   <body>
     <div id="container">
@@ -99,7 +147,21 @@
           <button>Masuk</button>
         </div>
       </div>
-      <div id="content"></div>
+      <div id="content">
+        <h1>
+          Film, acara TV tak <br />
+          terbatas, dan lebih banyak lagi.
+        </h1>
+        <h4>Tonton di mana pun. Batalkan kapan pun.</h4>
+        <h6>
+          Siap menonton? Masukkan email untuk membuat atau memulai lagi
+          keanggotaanmu.
+        </h6>
+        <div id="subscribe">
+          <input type="text" placeholder="Alamat Email" />
+          <button>Mulai ></button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
