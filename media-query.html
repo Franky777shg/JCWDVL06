@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      padding: 0 10px;
+    }
+    #orange {
+      height: 180px;
+      display: grid;
+      gap: 10px;
+    }
+    #orange div {
+      background-color: orange;
+    }
+    #yellow {
+      margin-top: 20px;
+      height: 120px;
+      background-color: yellow;
+    }
+    #blue {
+      margin-top: 20px;
+      height: 700px;
+      display: grid;
+      gap: 10px;
+    }
+    #blue div {
+      background-color: cornflowerblue;
+    }
+    #grey {
+      margin-top: 20px;
+      height: 360px;
+      display: grid;
+      gap: 10px;
+    }
+    #grey div {
+      background-color: gainsboro;
+    }
+    @media only screen and (min-width: 321px) {
+      #yellow {
+        height: 240px;
+      }
+      #blue {
+        height: 300px;
+        gap: 5px;
+      }
+      #grey {
+        grid-template-columns: 1fr 1fr;
+        height: 200px;
+        row-gap: 5px;
+      }
+    }
+    @media only screen and (min-width: 769px) {
+      body {
+        padding: 0 30px;
+      }
+      #orange {
+        grid-template-columns: 1fr 1fr;
+        height: 100px;
+      }
+      #yellow {
+        height: 330px;
+      }
+      #blue {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        height: 250px;
+      }
+      #grey {
+        grid-template-columns: repeat(4, 1fr);
+        height: 150px;
+      }
+    }
+  </style>
+  <body>
+    <div id="orange">
+      <div></div>
+      <div></div>
+    </div>
+    <div id="yellow"></div>
+    <div id="blue">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div id="grey">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </body>
+</html>
