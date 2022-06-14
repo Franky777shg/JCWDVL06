@@ -1,14 +1,27 @@
-import { useState } from "react";
 import { Button, Container, Heading } from "@chakra-ui/react";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "./redux/actions/counterActions";
 
 function App() {
-  const [count, setCount] = useState(5);
-  const decrement = () => {
-    setCount(count - 1);
+  // connect to reducer with useSelector
+  const { counter } = useSelector((state) => {
+    return {
+      counter: state,
+    };
+  });
+
+  const dispatch = useDispatch();
+
+  const onDecrement = () => {
+    // dispatch action decrement
+    dispatch(decrement());
   };
-  const increment = () => {
-    setCount(count + 1);
+
+  const onIncrement = () => {
+    // dispatch action increment
+    dispatch(increment());
   };
+
   return (
     <>
       <Heading size="4xl" style={{ textAlign: "center" }}>
@@ -26,11 +39,11 @@ function App() {
         }}
         borderRadius="lg"
       >
-        <Button colorScheme="red" variant="solid" onClick={decrement}>
+        <Button colorScheme="red" variant="solid" onClick={onDecrement}>
           -
         </Button>
-        <Heading style={{ fontSize: "10rem" }}>{count}</Heading>
-        <Button colorScheme="green" variant="solid" onClick={increment}>
+        <Heading style={{ fontSize: "10rem" }}>{counter}</Heading>
+        <Button colorScheme="green" variant="solid" onClick={onIncrement}>
           +
         </Button>
       </Container>
