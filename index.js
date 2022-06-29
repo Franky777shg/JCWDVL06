@@ -70,6 +70,20 @@ const server = http.createServer((req, res) => {
       .on("end", () => {
         let data = JSON.parse(input);
 
+        let checkKey = Object.keys(data);
+        // console.log(checkKey);
+
+        if (
+          checkKey.length !== 3 ||
+          !checkKey.includes("username") ||
+          !checkKey.includes("password") ||
+          !checkKey.includes("email")
+        ) {
+          res.writeHead(400, { "content-type": "text/html" });
+          res.end("Input not valid!");
+          return;
+        }
+
         database.push(data);
 
         res.writeHead(200, { "content-type": "application/json" });
@@ -87,7 +101,18 @@ const server = http.createServer((req, res) => {
 
         let index = +urlAddress.query;
 
-        database.splice(index, 1, obj);
+        let tempUser = { ...database[index] };
+
+        for (let key in obj) {
+          for (let key2 in tempUser) {
+            if (key === key2) {
+              tempUser[key2] = obj[key];
+            }
+          }
+        }
+
+        // console.log(tempUser);
+        database.splice(index, 1, tempUser);
 
         res.writeHead(200, { "content-type": "application/json" });
         res.end(JSON.stringify(database));
