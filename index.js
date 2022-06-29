@@ -22,8 +22,9 @@ let database = [
 ];
 
 const server = http.createServer((req, res) => {
-  //   console.log(req);
-  //   console.log(res);
+  const urlAddress = url.parse(req.url);
+  // console.log(urlAddress);
+
   if (req.url === "/") {
     let home = fs.readFileSync("home.html", "utf-8");
     // console.log(home);
@@ -59,6 +60,37 @@ const server = http.createServer((req, res) => {
           res.writeHead(200, { "content-type": "application/json" });
           res.end(JSON.stringify(database[indexUser]));
         }
+      });
+  } else if (req.url === "/register") {
+    let input = "";
+    req
+      .on("data", (chunk) => {
+        input = chunk.toString();
+      })
+      .on("end", () => {
+        let data = JSON.parse(input);
+
+        database.push(data);
+
+        res.writeHead(200, { "content-type": "application/json" });
+        res.end(JSON.stringify(database));
+      });
+  } else if (urlAddress.pathname === "/edit") {
+    let input = "";
+
+    req
+      .on("data", (chunk) => {
+        input = chunk.toString();
+      })
+      .on("end", () => {
+        let obj = JSON.parse(input);
+
+        let index = +urlAddress.query;
+
+        database.splice(index, 1, obj);
+
+        res.writeHead(200, { "content-type": "application/json" });
+        res.end(JSON.stringify(database));
       });
   }
 });
