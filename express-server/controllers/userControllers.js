@@ -29,7 +29,9 @@ module.exports = {
     db.query(getQuery, (err, result) => {
       if (err) return console.log(err);
 
-      res.status(200).send(result);
+      if (!result.length) return res.status(400).send("Gagal Login Nih!");
+
+      res.status(200).send("Berhasil login Nih!");
     });
   },
   register: (req, res) => {
@@ -41,7 +43,7 @@ module.exports = {
     db.query(addQuery, (err, result) => {
       if (err) return console.log(err);
 
-      res.status(200).send(result);
+      res.status(200).send("Berhasil Register nih!");
     });
   },
   edit: (req, res) => {
